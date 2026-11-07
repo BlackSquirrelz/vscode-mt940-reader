@@ -1,0 +1,68 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "MT940",
+  "scopeName": "source.mt940",
+  "patterns": [
+    { "include": "#envelope" },
+    { "include": "#statementLine" },
+    { "include": "#balance" },
+    { "include": "#reference" },
+    { "include": "#text" },
+    { "include": "#otherTag" },
+    { "include": "#subfield" },
+    { "include": "#end" }
+  ],
+  "repository": {
+    "envelope": {
+      "match": "\\{\\d:[^{}]*\\}?",
+      "name": "comment.block.envelope.mt940"
+    },
+    "statementLine": {
+      "match": "^(:61:)(\\d{6})(\\d{4})?(RC|RD|EC|ED|C|D)([A-Z])?([\\d,]+)([A-Z][A-Z0-9]{3})([^/\\r\\n]{0,16})(//[^\\r\\n]{0,16})?",
+      "captures": {
+        "1": { "name": "keyword.control.tag.mt940" },
+        "2": { "name": "constant.numeric.date.mt940" },
+        "3": { "name": "constant.numeric.date.mt940" },
+        "4": { "name": "storage.modifier.mark.mt940" },
+        "5": { "name": "storage.modifier.funds.mt940" },
+        "6": { "name": "constant.numeric.amount.mt940" },
+        "7": { "name": "entity.name.type.code.mt940" },
+        "8": { "name": "string.unquoted.reference.mt940" },
+        "9": { "name": "string.unquoted.reference.mt940" }
+      }
+    },
+    "balance": {
+      "match": "^(:6[0245][FM]?:)([CD])(\\d{6})([A-Z]{3})([\\d,]+)",
+      "captures": {
+        "1": { "name": "keyword.control.tag.mt940" },
+        "2": { "name": "storage.modifier.mark.mt940" },
+        "3": { "name": "constant.numeric.date.mt940" },
+        "4": { "name": "support.constant.currency.mt940" },
+        "5": { "name": "constant.numeric.amount.mt940" }
+      }
+    },
+    "reference": {
+      "match": "^(:(?:20|21|25|28C?):)(.*)$",
+      "captures": {
+        "1": { "name": "keyword.control.tag.mt940" },
+        "2": { "name": "entity.name.section.mt940" }
+      }
+    },
+    "text": {
+      "match": "^(:(?:86|NS):)",
+      "captures": { "1": { "name": "keyword.control.tag.mt940" } }
+    },
+    "otherTag": {
+      "match": "^(:\\d{2}[A-Z]?:)",
+      "captures": { "1": { "name": "keyword.control.tag.mt940" } }
+    },
+    "subfield": {
+      "match": "\\?\\d{2}",
+      "name": "variable.parameter.subfield.mt940"
+    },
+    "end": {
+      "match": "^-\\}?\\s*$",
+      "name": "comment.line.end.mt940"
+    }
+  }
+}

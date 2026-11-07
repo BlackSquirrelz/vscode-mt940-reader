@@ -1,0 +1,28 @@
+:20:STARTUMS
+:25:CH9300762011623852957
+:28:00011
+:NS:22Anna Muster
+23Mitglieder Privatkonto
+3000080808
+:60F:C260901CHF000000002000,00
+:61:2609010901D000000001000,00FMSCNONREF
+:NS:01Anna Muster
+02Musterweg 1
+033000 Bern
+04CH
+05
+17Übertrag auf Mitglieder Sparkonto CH56 0483 5012 3456 7800 9
+:61:2609030903D000000000005,00FMSCNONREF
+:NS:01Patreon Membership 01.09.2026, Visa Debit-Nr. 999999xxxxxx0000
+02USD 2.00, Wechselkurs 0.8266
+03inkl. Rundungsbetrag von CHF 1.85
+04inkl. Gebühr für Online-Einkauf im Ausland CHF 1.50
+17Online Einkauf Patreon* Membership
+:61:2609250925C000000007500,00FMSCNONREF
+:NS:01Arbeitgeber AG
+02Bahnhofstrasse 5
+038000 Zürich
+04CH
+17Lohn September
+:62F:C260930CHF000000008495,00
+-
