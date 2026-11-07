@@ -1,0 +1,118 @@
+{
+  "name": "mt940-reader",
+  "displayName": "MT940 Reader",
+  "description": "Opens SWIFT MT940 bank statements as readable tables: balances, bookings, booking texts, and a check that they add up.",
+  "version": "0.1.0",
+  "publisher": "blacksquirrelz",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BlackSquirrelz/vscode-mt940-reader.git"
+  },
+  "bugs": {
+    "url": "https://github.com/BlackSquirrelz/vscode-mt940-reader/issues"
+  },
+  "homepage": "https://github.com/BlackSquirrelz/vscode-mt940-reader#readme",
+  "keywords": [
+    "mt940",
+    "swift",
+    "bank statement",
+    "sta",
+    "camt",
+    "finance"
+  ],
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Visualization"
+  ],
+  "activationEvents": [],
+  "main": "./out/src/extension.js",
+  "contributes": {
+    "languages": [
+      {
+        "id": "mt940",
+        "aliases": [
+          "MT940",
+          "mt940"
+        ],
+        "extensions": [
+          ".mt940",
+          ".sta",
+          ".940"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "mt940",
+        "scopeName": "source.mt940",
+        "path": "./syntaxes/mt940.tmLanguage.json"
+      }
+    ],
+    "customEditors": [
+      {
+        "viewType": "mt940.statement",
+        "displayName": "MT940 Statement",
+        "selector": [
+          {
+            "filenamePattern": "*.mt940"
+          },
+          {
+            "filenamePattern": "*.sta"
+          },
+          {
+            "filenamePattern": "*.940"
+          }
+        ],
+        "priority": "default"
+      }
+    ],
+    "commands": [
+      {
+        "command": "mt940.openAsText",
+        "title": "MT940: Open as Text",
+        "icon": "$(go-to-file)"
+      },
+      {
+        "command": "mt940.openAsStatement",
+        "title": "MT940: Open as Statement",
+        "icon": "$(table)"
+      }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "command": "mt940.openAsStatement",
+          "when": "editorLangId == mt940",
+          "group": "navigation"
+        },
+        {
+          "command": "mt940.openAsText",
+          "when": "activeCustomEditorId == mt940.statement",
+          "group": "navigation"
+        }
+      ]
+    },
+    "configurationDefaults": {
+      "[mt940]": {
+        "files.autoGuessEncoding": true,
+        "editor.wordWrap": "off"
+      }
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p .",
+    "test": "tsc -p . && node --test \"out/test/**/*.test.js\"",
+    "package": "tsc -p . && vsce package --out mt940-reader.vsix"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.90.0",
+    "@vscode/vsce": "^3.0.0",
+    "typescript": "^5.6.0"
+  }
+}
