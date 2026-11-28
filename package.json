@@ -110,9 +110,9 @@
     "package": "tsc -p . && vsce package --out mt940-reader.vsix"
   },
   "devDependencies": {
-    "@types/node": "^26.6.6",
-    "@types/vscode": "^1.90.0",
-    "@vscode/vsce": "^4.1.0",
+    "@types/node": "^26.6.10",
+    "@types/vscode": "^1.146.0",
+    "@vscode/vsce": "^4.1.1",
     "typescript": "^7.0.2"
   }
 }
